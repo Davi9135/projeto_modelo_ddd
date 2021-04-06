@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ProjetoModeloDDD.MVC.Core.ViewModels.ClienteViewModel>
+
+@{
+    ViewData["Title"] = "Clientes Especiais";
+}
+
+<h1>Clientes Especiais</h1>
+
+<p>
+    <a asp-action="Create">Criar Novo Cliente</a>
+</p>
+<p>
+    <b>Para ser um cliente especial deve ser um cliente que tenha pelo menos 5 anos de cadastro e deve ser ativo no sistema.</b>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sobrenome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ativo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>            
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new {  id=item.ClienteId }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.ClienteId }) |
+                @Html.ActionLink("Deletar", "Delete", new { id = item.ClienteId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
