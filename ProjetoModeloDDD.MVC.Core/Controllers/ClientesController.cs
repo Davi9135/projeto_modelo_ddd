@@ -22,6 +22,7 @@ namespace ProjetoModeloDDD.MVC.Core.Controllers
         public ActionResult Index()
         {
             var clienteViewModel = _autoMapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(_clienteAppService.GetAll());
+
             return View(clienteViewModel);
         }
 
@@ -106,6 +107,15 @@ namespace ProjetoModeloDDD.MVC.Core.Controllers
             _clienteAppService.Remove(cliente);
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult GetFiltroPorNomeDoCliente(string nome)
+        {
+            IEnumerable<ClienteViewModel> clienteViewModelList = _autoMapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(_clienteAppService.BuscarPorNome(nome));
+            ViewBag.nome = Request.Query["nome"].Count > 0 ? Request.Query["nome"].ToString() : string.Empty;
+
+            return View("Index", clienteViewModelList);
         }
     }
 }

@@ -9,6 +9,15 @@
 <p>
     <a asp-action="Create">Criar Novo Produto</a>
 </p>
+<br />
+<form asp-action="GetFiltroPorNomeDoProduto" method="get">
+    <p>
+        <Label>Nome: </Label> <input type="text" id="nome" name="nome" value="@ViewBag.nome" />
+        <input type="submit" value="Pesquisar" />
+        <input type="submit" value="Limpar Pesquisa" formaction="Index" />
+    </p>
+</form>
+<br />
 <table class="table">
     <thead>
         <tr>            
