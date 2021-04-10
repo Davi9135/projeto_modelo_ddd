@@ -15,6 +15,11 @@ namespace ProjetoModeloDDD.Application
             _clienteService = clienteService;
         }
 
+        public IEnumerable<Cliente> BuscarPorNome(string nome)
+        {
+            return _clienteService.BuscarPorNome(nome);
+        }
+
         public IEnumerable<Cliente> ObterClientesEspeciais()
         {
             return _clienteService.ObterClientesEspeciais(_clienteService.GetAll());

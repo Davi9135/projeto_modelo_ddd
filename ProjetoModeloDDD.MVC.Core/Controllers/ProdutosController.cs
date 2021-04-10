@@ -114,5 +114,14 @@ namespace ProjetoModeloDDD.MVC.Core.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult GetFiltroPorNomeDoProduto(string nome)
+        {
+            IEnumerable<ProdutoViewModel> produtoViewModelList = _autoMapper.Map<IEnumerable<Produto>, IEnumerable<ProdutoViewModel>>(_produtoAppService.BuscarPorNome(nome));
+            ViewBag.nome = Request.Query["nome"].Count > 0 ? Request.Query["nome"].ToString() : string.Empty;
+
+            return View("Index", produtoViewModelList);
+        }
     }
 }

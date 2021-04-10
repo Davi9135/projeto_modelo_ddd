@@ -6,5 +6,7 @@ namespace ProjetoModeloDDD.Application.Interface
     public interface IClienteAppService : IAppServiceBase<Cliente>
     {
         IEnumerable<Cliente> ObterClientesEspeciais();
+
+        IEnumerable<Cliente> BuscarPorNome(string nome);
     }
 }

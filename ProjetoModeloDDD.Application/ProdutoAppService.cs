@@ -14,7 +14,7 @@ namespace ProjetoModeloDDD.Application
         public ProdutoAppService(IProdutoService produtoService) 
             : base(produtoService)
         {
-            produtoService = _produtoService;
+            _produtoService = produtoService ;
         }
 
         public IEnumerable<Produto> BuscarPorNome(string nome)
